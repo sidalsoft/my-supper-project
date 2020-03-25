@@ -1,33 +1,16 @@
 package ru.javarush.info.fatfaggy.animals.configs;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import ru.javarush.info.fatfaggy.animals.entities.Cat;
-import ru.javarush.info.fatfaggy.animals.entities.Dog;
-import ru.javarush.info.fatfaggy.animals.entities.Parrot;
 import ru.javarush.info.fatfaggy.animals.week.*;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 @Configuration
+@ComponentScan("ru.javarush.info.fatfaggy.animals.entities")
 public class MyConfig {
-    @Bean
-    public Cat getCat(Parrot parrot) {
-        Cat cat = new Cat();
-        cat.setName(parrot.getName() + "-killer");
-        return cat;
-    }
-
-    @Bean
-    public Dog getDog() {
-        return new Dog();
-    }
-
-    @Bean("parrot-kesha")
-    public Parrot weNeedMoreParrots() {
-        return new Parrot();
-    }
     @Bean
     public WeekDay getDay() {
         DayOfWeek dayOfWeek = LocalDate.now().getDayOfWeek();
